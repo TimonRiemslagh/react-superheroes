@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { InputGroup, InputGroupAddon, InputGroupText, Input } from 'reactstrap';
+import { InputGroup, InputGroupAddon, Button, Input } from 'reactstrap';
 
 class SearchBar extends Component {
     constructor(props) {
@@ -11,15 +11,21 @@ class SearchBar extends Component {
     }
 
     doSearch() {
+        console.log(this.state.term);
+    }
 
+    handleChange(event) {
+        this.setState({value: event.target.value});
     }
 
     render() {
         return (
             <div>
                 <InputGroup>
-                    <Input placeholder="Search your favorite superhero" />
-                    <InputGroupAddon addonType="append"><Button>Search</Button></InputGroupAddon>
+                    <Input type="text" value={this.state.term} onChange={this.handleChange} placeholder="Search your favorite superhero" />
+                    <InputGroupAddon addonType="append">
+                        <Button onClick={this.doSearch()}>Search</Button>
+                    </InputGroupAddon>
                 </InputGroup>
             </div>
         )

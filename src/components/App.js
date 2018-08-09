@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Hero from './Hero';
 import DatabaseService from "../databaseService";
+import SearchBar from "./SearchBar";
 
 class App extends Component {
     constructor(props) {
@@ -11,7 +12,6 @@ class App extends Component {
 
 
     getSuperHeroes() {
-
         DatabaseService.getAllHeroes()
             .then((res) => {
                 this.setState({
@@ -29,6 +29,9 @@ class App extends Component {
             <div>
                 <div className="container">
                     <h1>Super heroes</h1>
+
+                    <SearchBar />
+
                     <div className="row">
                     {
                         this.state.heroes.map(hero => {
